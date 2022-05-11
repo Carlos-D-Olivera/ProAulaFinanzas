@@ -1,0 +1,88 @@
+class Banco{
+
+   - Sucursal sucursal;
+   - Cliente clientes;   
+   - Cuenta cuenta;
+   - String email;
+   - String telefono
+   - String direccion;
+}
+
+class Cliente{
+   
+   - String nombre;
+   - String direccion;
+   - String codigo;
+   - String email;
+}
+
+class Cuenta{
+   -String id;
+   -String nombre;
+   -String CCC;
+   -int SaldoActual;
+   -int SaldoMedio;
+   -Banco banco;
+   -Cliente cliente;
+   +calcularCCC()
+}
+
+class C_PersonasReales{
+   - String apellido;
+   - date f_nacimiento;
+   - String genero;
+}
+
+class C_Organizacion{
+   - String tipoOrganizacion;
+   - Representante representante;
+   - int NoEmpleados;
+}
+
+class CuentaAhorro{
+   - String amortizacion;
+}
+
+class CuentaCorriente{
+   - int sobregiro;
+   - int intereses;
+}
+
+class Sucursal{
+   - String id;
+   - String nombre;
+   - String direccion;
+   - String codigoPostal;
+   - String ciudad;
+   - Banco banco;
+   - Empleado empleado;
+}
+
+class Empleado{
+   - String dni;
+   - String nombre;
+   - date fechaNacimiento;
+   - String sexo;
+   - Sucursal sucursal;
+}
+
+
+class Representante{
+   - int id;
+   - String nombre;
+   - String telefono;
+   - String genero;
+   - String email;
+   - C_Organizacion c_organizacion;
+}
+Banco"1"--"*"Cliente
+Banco"1"*--"*"Sucursal
+Banco"1"--"*"Cuenta
+Cliente"1"<.."*..1"Cuenta
+C_Organizacion"1..*"--"1"Representante
+Sucursal"0..1" o-- "*"Empleado
+Cuenta<|-right-CuentaAhorro
+Cuenta<|-left-CuentaCorriente
+Cliente<|-left-C_PersonasReales
+Cliente<|-left-C_Organizacion
+Banco"1"--"*"Empleado
